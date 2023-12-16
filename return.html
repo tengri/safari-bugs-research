@@ -1,0 +1,43 @@
+<html lang="en">
+	<body>
+
+	<h3>
+		return to app page
+	</h3>
+		<script>
+		    const postLocalStorageTestResult = async function() {
+		        let localStorageTestResult = null;
+                let localStorageTestError = null;
+
+		        try {
+		            localStorage.setItem('localStorage', 'success');
+		            localStorageTestResult = localStorage.getItem('localStorage');
+		        } catch (e) {
+		            localStorageTestError = e.message;
+		        }
+
+		        await fetch('localstorage-test', {
+		            method: "POST",
+		            cache: "no-cache",
+		            credentials: "same-origin",
+		            headers: {
+		                "Content-Type": "application/json",
+		            },
+		            referrerPolicy: "no-referrer",
+		            body: JSON.stringify({localStorageTestResult: localStorageTestResult, localStorageTestError: localStorageTestError})
+		        });
+		    }
+
+
+		    window.close();
+		    postLocalStorageTestResult(); // it causes to error "null is not an object (evaluating ‘window.localStorage.setItem’)"
+
+		    /** Solution:
+			    postLocalStorageTestResult().then(() => {
+			        window.close()
+			    })
+		     */
+
+		</script>
+	</body>
+</html>

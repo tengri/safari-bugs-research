@@ -1,0 +1,26 @@
+<html lang="en">
+	<body>
+		<h3>App page</h3>
+
+		<script>
+		    console.info('app page');
+
+            const searchParams = new URLSearchParams(window.location.search);
+
+            const openIntegrationWindow = () => window.open('http://localhost:8081/integration', '_blank', '')
+
+            const redirectToIntegration = () => {
+                if (searchParams.has('asyncRedirectToIntegration')) {
+                    setTimeout(openIntegrationWindow, 1000);
+                } else {
+                    openIntegrationWindow();
+                }
+		    }
+		</script>
+
+		<button onclick="redirectToIntegration()">
+			to integration
+		</button>
+
+	</body>
+</html>
