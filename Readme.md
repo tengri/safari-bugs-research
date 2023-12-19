@@ -25,6 +25,7 @@ You can reproduce this bug in the following way:
 2. Click on the button "to integration".
 3. Click on the button "to the main page".
 4. Open Safari console.
+5. To reproduce this bug again you should come back to the main page, reload it and repeat steps 2-4. Reloading of the page is necessary to reproduce the bug again!
 
 Also, if you open new session add open http://localhost:8080/?asyncRedirectToIntegration=true in Safari, you will stay on the page and see the button in Address bar to open the integration page.
 
